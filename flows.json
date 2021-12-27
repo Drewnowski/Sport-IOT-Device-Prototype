@@ -1,0 +1,530 @@
+[
+    {
+        "id": "ce87fc1515605f09",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cab469e3051a83e0",
+        "type": "mqtt in",
+        "z": "ce87fc1515605f09",
+        "name": "Mqtt",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "452754b484189766",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 70,
+        "y": 380,
+        "wires": [
+            [
+                "94fdde572fbde25a",
+                "4551196b752d8d88",
+                "14bef29ffcfd762c",
+                "8857a0939410add2",
+                "eb634eb540a6073a",
+                "05e1be1815265a62",
+                "8db2e7cd24ac401f",
+                "67eb51e84701a36f"
+            ]
+        ]
+    },
+    {
+        "id": "eb634eb540a6073a",
+        "type": "debug",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.uplink_message.decoded_payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "8857a0939410add2",
+        "type": "change",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.testbpm",
+                "pt": "msg",
+                "to": "payload.uplink_message.decoded_payload.HeartBeat",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "707b5577694bbe95",
+                "553ece05a37cb50b"
+            ]
+        ]
+    },
+    {
+        "id": "707b5577694bbe95",
+        "type": "ui_text",
+        "z": "ce87fc1515605f09",
+        "group": "87503bf8633f0650",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "bpm :",
+        "format": "{{msg.payload.testbpm}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 530,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b642dda49f35015d",
+        "type": "ui_text",
+        "z": "ce87fc1515605f09",
+        "group": "87503bf8633f0650",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Device ID :",
+        "format": "{{msg.payload.id}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 530,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4551196b752d8d88",
+        "type": "change",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.id",
+                "pt": "msg",
+                "to": "payload.end_device_ids.device_id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "b642dda49f35015d"
+            ]
+        ]
+    },
+    {
+        "id": "14bef29ffcfd762c",
+        "type": "change",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.time",
+                "pt": "msg",
+                "to": "payload.uplink_message.settings.timestamp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "561041fd3cea0811"
+            ]
+        ]
+    },
+    {
+        "id": "561041fd3cea0811",
+        "type": "ui_text",
+        "z": "ce87fc1515605f09",
+        "group": "87503bf8633f0650",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "timestamp :",
+        "format": "{{msg.payload.time}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 530,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "05e1be1815265a62",
+        "type": "change",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.fall",
+                "pt": "msg",
+                "to": "payload.uplink_message.decoded_payload.FALL",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "b3db79df8acb9e89"
+            ]
+        ]
+    },
+    {
+        "id": "b3db79df8acb9e89",
+        "type": "ui_text",
+        "z": "ce87fc1515605f09",
+        "group": "87503bf8633f0650",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fall",
+        "format": "{{msg.payload.fall}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 550,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "67eb51e84701a36f",
+        "type": "change",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.temp",
+                "pt": "msg",
+                "to": "payload.uplink_message.decoded_payload.TEMP",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 520,
+        "wires": [
+            [
+                "a8746ae53f1ec0a0",
+                "7dde1e9e36b7232d"
+            ]
+        ]
+    },
+    {
+        "id": "a8746ae53f1ec0a0",
+        "type": "ui_text",
+        "z": "ce87fc1515605f09",
+        "group": "87503bf8633f0650",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "temperature :",
+        "format": "{{msg.payload.temp}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 560,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "8db2e7cd24ac401f",
+        "type": "change",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.spo",
+                "pt": "msg",
+                "to": "payload.uplink_message.decoded_payload.SPO",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 460,
+        "wires": [
+            [
+                "d275a4d999b38c55",
+                "e60a787cc5a8e3e0"
+            ]
+        ]
+    },
+    {
+        "id": "d275a4d999b38c55",
+        "type": "ui_text",
+        "z": "ce87fc1515605f09",
+        "group": "87503bf8633f0650",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "saturation O2 :",
+        "format": "{{msg.payload.spo}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 860,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "94fdde572fbde25a",
+        "type": "change",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "bpm",
+                "pt": "flow",
+                "to": "payload.uplink_message.decoded_payload.HeartBeat",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "spo",
+                "pt": "flow",
+                "to": "payload.uplink_message.decoded_payload.SPO",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "fall",
+                "pt": "flow",
+                "to": "payload.uplink_message.decoded_payload.FALL",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "temp",
+                "pt": "msg",
+                "to": "payload.uplink_message.decoded_payload.TEMP",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "id",
+                "pt": "msg",
+                "to": "payload.end_device_ids.device_id",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "time",
+                "pt": "msg",
+                "to": "payload.uplink_message.settings.timestamp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e60a787cc5a8e3e0",
+        "type": "ui_gauge",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "group": "565c7da05ff03c58",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "SpO2 rate ",
+        "label": "%",
+        "format": "{{msg.payload.spo}}",
+        "min": "90",
+        "max": "100",
+        "colors": [
+            "#b31200",
+            "#e6e600",
+            "#3acb3c"
+        ],
+        "seg1": "95",
+        "seg2": "97",
+        "className": "",
+        "x": 800,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "7dde1e9e36b7232d",
+        "type": "ui_gauge",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "group": "565c7da05ff03c58",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Ambient temperature",
+        "label": "°C",
+        "format": "{{msg.payload.temp}}",
+        "min": 0,
+        "max": "30",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "26",
+        "seg2": "28",
+        "className": "",
+        "x": 610,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "553ece05a37cb50b",
+        "type": "ui_gauge",
+        "z": "ce87fc1515605f09",
+        "name": "",
+        "group": "b0aedaea35f2215d",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Heart Rate",
+        "label": "BPM",
+        "format": "{{msg.payload.testbpm}}",
+        "min": "50",
+        "max": "200",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "120",
+        "seg2": "180",
+        "className": "",
+        "x": 560,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "452754b484189766",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "eu1.cloud.thethings.network",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "87503bf8633f0650",
+        "type": "ui_group",
+        "name": "BPM",
+        "tab": "5e48741fcecdf667",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "565c7da05ff03c58",
+        "type": "ui_group",
+        "name": "Test",
+        "tab": "5e48741fcecdf667",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b0aedaea35f2215d",
+        "type": "ui_group",
+        "name": "BMP",
+        "tab": "5e48741fcecdf667",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5e48741fcecdf667",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
